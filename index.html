@@ -10,18 +10,27 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <h1 class="brand">Ujjawal Patel</h1>
-      <nav class="nav">
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <div class="container header-flex">
+    <h1 class="brand">Ujjawal Patel</h1>
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('open');
+  });
+</script>
 
   <section class="hero">
     <div class="container">
