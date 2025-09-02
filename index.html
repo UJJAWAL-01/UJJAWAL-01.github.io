@@ -6,165 +6,7 @@
   <title>Ujjawal Patel | Portfolio</title>
   <link rel="icon" type="image/png" href="UJ_logo.png">
   <meta name="description" content="Portfolio of Ujjawal Patel — Business Analyst, Forensic Analyst, and MIS Graduate Student." />
-  <style>
-    /* === Global Styles === */
-    :root {
-      --bg: #0b0f17;
-      --card: #121826;
-      --ink: #e5e7eb;
-      --muted: #98a2b3;
-      --accent: #22c55e;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html, body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.6;
-      font-size: 18px;
-    }
-
-    a { color: var(--ink); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .container { max-width: 980px; margin: 0 auto; padding: 0 1rem; }
-
-    /* === Header / Nav === */
-    .site-header {
-      position: sticky;
-      top: 0;
-      background: rgba(11, 15, 23, 0.9);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid #1f2937;
-      z-index: 10;
-      padding: 0.75rem 0;
-    }
-
-    .header-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .site-header .brand { font-size: 2rem; font-weight: 700; }
-
-    .nav {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-    .nav a { font-weight: 600; color: var(--muted); }
-    .nav a:hover { color: var(--ink); }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--ink);
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-
-    /* === Hero Section === */
-    .hero {
-      padding: 4rem 0;
-      background: linear-gradient(180deg, rgba(34, 197, 94, 0.08), transparent);
-      text-align: center;
-    }
-    .hero h2 { font-size: 2rem; margin-bottom: 1rem; }
-    .hero p { max-width: 60ch; margin: 0 auto; color: var(--muted); font-size: 1.1rem; }
-
-    /* === Sections === */
-    .section { padding: 3rem 0; }
-    .section h3 { font-size: 1.6rem; margin-bottom: 1rem; }
-
-    .pill-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .pill-list li {
-      padding: 0.4rem 0.8rem;
-      border: 1px solid #2c3340;
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid #1f2937;
-      border-radius: 1rem;
-      padding: 1.25rem;
-    }
-    .card h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-    .card .meta { color: var(--muted); font-size: 0.9rem; }
-
-    .timeline { list-style: none; display: grid; gap: 1.25rem; }
-    .timeline li {
-      background: var(--card);
-      border: 1px solid #1f2937;
-      border-radius: 1rem;
-      padding: 1.25rem;
-    }
-    .role { font-weight: 700; font-size: 1.1rem; }
-    .org { color: var(--muted); font-size: 0.95rem; }
-    .time { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
-
-    .site-footer {
-      border-top: 1px solid #1f2937;
-      padding: 1.5rem 0;
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.9rem;
-    }
-
-    /* === Responsive Tweaks === */
-    @media (max-width: 768px) {
-      .menu-toggle { display: block; }
-
-      .nav {
-        flex-direction: column;
-        background: var(--card);
-        position: absolute;
-        top: 60px;
-        right: 1rem;
-        width: 200px;
-        padding: 1rem;
-        border-radius: 0.75rem;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        transform: translateX(100%);
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .nav.open {
-        transform: translateX(0);
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .hero h2 { font-size: 1.6rem; }
-      .section { padding: 2rem 1.25rem; }
-      .section h3 { font-size: 1.4rem; }
-    }
-
-    @media (max-width: 480px) {
-      body { font-size: 16px; }
-      .hero { padding: 3rem 1rem; }
-      .grid { grid-template-columns: 1fr; }
-      .container { padding: 0 1rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
@@ -194,7 +36,100 @@
   </section>
 
   <main>
-    <!-- About, Education, Skills, Projects, Experience, Contact sections go here (same as before) -->
+    <!-- About Section -->
+    <section id="about" class="section container">
+      <h3>About</h3>
+      <p>
+        I have a background in computer engineering and cybersecurity with experience across financial analysis, Pine Script development, and forensic investigation. My interests include investment finance, algorithmic trading, derivatives, quantitative strategies, product development, and business consulting.
+      </p>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section container">
+      <h3>Education</h3>
+      <ul class="timeline">
+        <li>
+          <div class="role">Master of Science in Management Information Systems</div>
+          <div class="org">Texas A&M University, Mays Business School</div>
+          <div class="time">May 2027</div>
+        </li>
+        <li>
+          <div class="role">Bachelor of Technology in Computer Engineering</div>
+          <div class="org">K.J. Somaiya College of Engineering, Mumbai</div>
+          <div class="time">June 2025</div>
+          <p>Honors degree in Cybersecurity, Forensics, and Cyber Laws</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section container">
+      <h3>Skills</h3>
+      <ul class="pill-list">
+        <li>Java</li><li>C</li><li>HTML</li><li>CSS</li><li>Python</li><li>SQL</li>
+        <li>MS Excel</li><li>PowerPoint</li><li>Figma</li>
+        <li>Kali Linux</li><li>Wireshark</li><li>Network Miner</li><li>Meterpreter</li>
+      </ul>
+      <p><strong>Certifications:</strong> Google UX Design Professional Certificate, Google Project Management Foundations, Project Initiation, Project Planning</p>
+      <p><strong>Soft Skills:</strong> Logical reasoning, Learning agility, Collaboration, Confidence under pressure, Analytical thinking</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section container">
+      <h3>Featured Projects</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>SPESA — Finance Portal</h4>
+          <p>Expense tracking with EMI & SIP calculators; dashboard for financial planning. Built with HTML, CSS, JavaScript.</p>
+          <div class="meta"><span>Frontend</span> · <span>Finance</span></div>
+        </article>
+        <article class="card">
+          <h4>StopHunterVS — Trading Algo</h4>
+          <p>Python algorithm detecting stop-hunt patterns using volume, price action, and liquidity zone analysis.</p>
+          <div class="meta"><span>Python</span> · <span>Quant</span></div>
+        </article>
+        <article class="card">
+          <h4>Consolidated Financial Planner</h4>
+          <p>LLM-powered platform comparing investment options (SIP, bonds, equities, PPF, etc.) using user criteria.</p>
+          <div class="meta"><span>LLM</span> · <span>Finance</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section container">
+      <h3>Experience</h3>
+      <ul class="timeline">
+        <li>
+          <div class="role">Business Analyst Intern</div>
+          <div class="org">ESPS Finserv Pvt. Ltd.</div>
+          <div class="time">Jan 2025 – Jun 2025</div>
+          <p>Built an integrated investment product catalog for advisors to improve client portfolio diversification.</p>
+          <p>Developed algorithmic trading indicators in Python and Pine Script to support derivatives trading.</p>
+        </li>
+        <li>
+          <div class="role">Forensic Analyst Intern</div>
+          <div class="org">DeepCytes Cyberlabs (UK)</div>
+          <div class="time">Jun 2024 – Dec 2024</div>
+          <p>Contributed to digital bug detection toolkit; improved investigation efficiency by 35%.</p>
+        </li>
+        <li>
+          <div class="role">Application Developer Intern</div>
+          <div class="org">K.J. Somaiya College of Engineering</div>
+          <div class="time">Jan 2023 – Mar 2023</div>
+          <p>Built “Medical Information Collector” app to redistribute unused medicines to communities in need.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section container">
+      <h3>Contact</h3>
+      <p>Email: <a href="mailto:ujjawal.patel@tamu.edu">ujjawal.patel@tamu.edu</a></p>
+      <p>Phone: <a href="tel:+19796612244">(979) 661-2244</a></p>
+      <p>GitHub: <a target="_blank" rel="noreferrer" href="https://github.com/UJJAWAL-01">Ujjawal Patel Github</a></p>
+      <p>LinkedIn: <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/ujjawal-patel-7508b8199/">Ujjawal Patel Linkedin</a></p>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -203,22 +138,6 @@
     </div>
   </footer>
 
-  <!-- === Script for mobile toggle === -->
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.nav');
-
-    nav.classList.remove('open');
-
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-    });
-
-    window.addEventListener('resize', () => {
-      if(window.innerWidth > 768) {
-        nav.classList.remove('open');
-      }
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
