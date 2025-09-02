@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ujjawal Patel | Portfolio</title>
-  <link rel="icon" type="image/png" href="UJ_logo.png" />
-  <meta name="description" content="Personal portfolio of Ujjawal Patel — MIS Graduate Student, Business Analyst, and Forensic Analyst." />
-  <link rel="stylesheet" href="style.css" />
-  <!-- AOS Animation Library -->
+  <link rel="icon" type="image/png" href="UJ_logo.png">
+  <meta name="description" content="Portfolio of Ujjawal Patel — Graduate MIS Student, Business Analyst, Forensic Analyst." />
+  <link rel="stylesheet" href="style.css">
+  <!-- AOS for smooth animations -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  <!-- Header -->
   <header class="site-header">
     <div class="container header-flex">
       <h1 class="brand">Ujjawal Patel</h1>
@@ -19,34 +18,37 @@
       <nav class="nav">
         <a href="#about">About</a>
         <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a href="https://www.linkedin.com/in/ujjawal-patel-7508b8199/" target="_blank" class="social-icon" aria-label="LinkedIn">
+        <img src="linkedin.svg" alt="LinkedIn" />
+      </a>
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero" data-aos="fade-up">
     <div class="container">
       <h2>Graduate MIS Student · Business Analyst · Forensic Analyst</h2>
       <p>
-        Passionate about bridging business strategy and technology, I focus on
-        delivering impactful solutions in finance, digital forensics, and information systems.
+        Pursuing my Master of Science in Management Information Systems at Texas A&M University. 
+        With experience in business analysis, digital forensics, and application development, I combine 
+        technical, financial, and analytical expertise to build impactful solutions.
       </p>
-      <a class="btn" href="https://www.linkedin.com/in/ujjawal-patel-7508b8199/" target="_blank">Connect on LinkedIn</a>
     </div>
   </section>
 
-  <!-- About -->
   <main>
+    <!-- About -->
     <section id="about" class="section container" data-aos="fade-up">
       <h3>About</h3>
       <p>
-        I am pursuing my Master of Science in Management Information Systems at Texas A&M University. 
-        With a background in computer engineering, cybersecurity, and business analysis, I specialize 
-        in turning data-driven insights into actionable strategies. My interests include investment finance, 
-        algorithmic trading, and building scalable digital systems.
+        I am a business-focused technologist with a foundation in computer engineering and cybersecurity. 
+        My interests span investment finance, algorithmic trading, quantitative strategies, and business consulting. 
+        I thrive at the intersection of data, strategy, and technology.
       </p>
     </section>
 
@@ -57,15 +59,72 @@
         <li>
           <div class="role">Master of Science in Management Information Systems</div>
           <div class="org">Texas A&M University, Mays Business School</div>
-          <div class="time">Expected May 2027</div>
+          <div class="time">May 2027</div>
         </li>
         <li>
           <div class="role">Bachelor of Technology in Computer Engineering</div>
           <div class="org">K.J. Somaiya College of Engineering, Mumbai</div>
           <div class="time">June 2025</div>
-          <p>Honors in Cybersecurity, Forensics, and Cyber Laws</p>
+          <p>Honors degree in Cybersecurity, Forensics, and Cyber Laws</p>
         </li>
       </ul>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section container" data-aos="fade-up">
+      <h3>Skills</h3>
+      <ul class="pill-list">
+        <li>Java</li><li>C</li><li>Python</li><li>SQL</li><li>HTML</li><li>CSS</li>
+        <li>MS Excel</li><li>PowerPoint</li><li>Power BI</li><li>Figma</li>
+        <li>Kali Linux</li><li>Wireshark</li><li>Network Miner</li>
+      </ul>
+      <p><strong>Soft Skills:</strong> Analytical thinking, Learning agility, Collaboration, Confidence under pressure</p>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="section container" data-aos="fade-up">
+      <h3>Certifications</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>Google UX Design Specialization</h4>
+          <p>Google</p>
+          <a href="https://coursera.org/share/6df8d69758ab3cf00ff396bea25f4090" target="_blank">View Certificate</a>
+        </article>
+        <article class="card">
+          <h4>Google Project Management: Foundations</h4>
+          <p>Google</p>
+          <a href="https://coursera.org/share/9974fbc991abb53e55e55c20acd7d7f9" target="_blank">View Certificate</a>
+        </article>
+        <article class="card">
+          <h4>Project Initiation: Starting a Successful Project</h4>
+          <p>Google</p>
+          <a href="https://coursera.org/share/31349eaf503aec4a11cd94dd45a26f87" target="_blank">View Certificate</a>
+        </article>
+        <article class="card">
+          <h4>Databases and SQL for Data Science with Python</h4>
+          <p>IBM</p>
+          <a href="https://coursera.org/share/604cd016a1fc11f3c3c414726fc254d0" target="_blank">View Certificate</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section container" data-aos="fade-up">
+      <h3>Featured Projects</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>SPESA — Finance Portal</h4>
+          <p>Expense tracking with EMI & SIP calculators; dashboard for financial planning. Built with HTML, CSS, JavaScript.</p>
+        </article>
+        <article class="card">
+          <h4>StopHunterVS — Trading Algo</h4>
+          <p>Algorithm detecting stop-hunt patterns using volume, price action, and liquidity zone analysis.</p>
+        </article>
+        <article class="card">
+          <h4>Consolidated Financial Planner</h4>
+          <p>LLM-powered platform comparing investment options (SIP, bonds, equities, PPF, etc.) using user criteria.</p>
+        </article>
+      </div>
     </section>
 
     <!-- Experience -->
@@ -77,9 +136,7 @@
           <div class="org">ESPS Finserv Pvt. Ltd.</div>
           <div class="time">Jan 2025 – Jun 2025</div>
           <p>
-            Developed investment product catalogs and derivatives trading strategies, 
-            enabling diversified portfolios and boosting algorithmic accuracy. Researched 
-            statistical arbitrage models that improved profitability by 20%.
+            At ESPS Finserv, I stepped into a dynamic financial consulting environment where my focus was to make investment recommendations more structured, insightful and diversified. I designed an integrated product catalog, which allowed advisors to quickly compare and diversify client portfolios. Alongside this, I built algorithmic trading indicators in Python and Pine Script, reducing manual research time and delivering sharper trading signals. Perhaps the most exciting part was exploring statistical arbitrage models, where I automated long–short decisions on correlated securities, giving clients nearly a 20% boost in portfolio profitability. This internship gave me a front-row seat to how finance and technology combine to drive real results.
           </p>
         </li>
         <li>
@@ -87,9 +144,7 @@
           <div class="org">DeepCytes Cyberlabs (UK)</div>
           <div class="time">Jun 2024 – Dec 2024</div>
           <p>
-            Enhanced digital forensics toolkits with process automation, improved 
-            investigation efficiency by 35%, and designed a field-deployable device 
-            against juice-jacking attacks.
+            Joining DeepCytes meant diving into the world of digital forensics and counter-surveillance. I helped develop a consolidated toolkit that automated parts of the investigation process, improving efficiency by more than a third. I also authored structured manuals and checklists that field teams could rely on during sensitive site evaluations, making complex security protocols practical and easy to follow. One of my proudest contributions was co-designing a hardware prototype that protected devices from juice-jacking attacks. Watching it evolve from research notes to a working, field-ready device showed me how hands-on innovation can strengthen digital security in real-world scenarios.
           </p>
         </li>
         <li>
@@ -97,32 +152,21 @@
           <div class="org">K.J. Somaiya College of Engineering</div>
           <div class="time">Jan 2023 – Mar 2023</div>
           <p>
-            Built the “Medical Information Collector” mobile app, enabling communities 
-            to redistribute unused medicines. Contributed to UX design and Android 
-            development for better accessibility.
+            During my time at Somaiya, I worked on a project that combined technology with social impact — the Medical Information Collector app. The idea was simple yet powerful: collect unused medicines from households and redistribute them to communities in need. I took charge of programming the app in Android Studio, focusing on features that made logging and tracking medicines intuitive. I also collaborated on the user interface design in Figma, ensuring even first-time users could navigate the app easily. This experience taught me not just about app architecture, but also about using technology to directly improve lives.
           </p>
         </li>
       </ul>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="section container" data-aos="fade-up">
-      <h3>Skills</h3>
-      <ul class="pill-list">
-        <li>Python</li><li>Java</li><li>C</li><li>SQL</li>
-        <li>HTML</li><li>CSS</li><li>Financial Modeling</li>
-        <li>Kali Linux</li><li>Wireshark</li><li>Figma</li>
-      </ul>
-      <p><strong>Certifications:</strong> Google UX Design, Google Project Management (Foundations, Initiation, Planning)</p>
     </section>
 
     <!-- Contact -->
     <section id="contact" class="section container" data-aos="fade-up">
       <h3>Contact</h3>
       <p>Email: <a href="mailto:ujjawal.patel@tamu.edu">ujjawal.patel@tamu.edu</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/ujjawal-patel-7508b8199/" target="_blank">linkedin.com/in/ujjawal-patel-7508b8199</a></p>
+      <p>Phone: <a href="tel:+19796612244">(979) 661-2244</a></p>
+      <p>GitHub: <a target="_blank" rel="noreferrer" href="https://github.com/UJJAWAL-01">Ujjawal Patel Github</a></p>
+      <p>LinkedIn: <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/ujjawal-patel-7508b8199/">Ujjawal Patel Linkedin</a></p>
 
-      <form action="https://formspree.io/f/yourFormID" method="POST" class="contact-form">
+      <form action="https://formspree.io/f/xpwjypyl" method="POST" class="contact-form">
         <input type="email" name="email" placeholder="Your email" required>
         <textarea name="message" rows="4" placeholder="Your message" required></textarea>
         <button type="submit">Send Message</button>
@@ -130,7 +174,6 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <small>© 2025 Ujjawal Patel</small>
@@ -139,8 +182,6 @@
 
   <script src="script.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
-  </script>
+  <script>AOS.init();</script>
 </body>
 </html>
