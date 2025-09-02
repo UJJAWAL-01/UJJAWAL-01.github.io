@@ -1,33 +1,29 @@
-# Personal Portfolio — GitHub Pages
+Ujjawal Patel Portfolio
 
-This is a minimalist, no-framework portfolio for **Ujjawal Patel**, ready to deploy on **GitHub Pages**.
+Welcome to the official portfolio website of **Ujjawal Patel** — a Graduate MIS student, Business Analyst, and Digital Forensic Analyst. This portfolio showcases my skills, projects, experiences, and certifications in technology, finance, and cybersecurity.
 
-## Quick Start (GitHub Web UI)
+---
 
-1. Create a new repository named **`<your-username>.github.io`** (replace with *your exact GitHub username*).
-2. Upload these files (`index.html`, `style.css`, `README.md`, `LICENSE`) to the repository root.
-3. Go to **Settings → Pages** and set:
-   - **Build and deployment → Source:** `Deploy from a branch`
-   - **Branch:** `main` / `(root)`
-4. Your site will publish at `https://<your-username>.github.io`.
+🌐 **Live Demo**
 
-## Edit
+[Visit My Portfolio](#) 
 
-- Update links in `index.html`:
-  - `https://github.com/<your-username>`
-  - `https://www.linkedin.com/in/<your-linkedin-handle>/`
-  - `mailto:ujjawal@example.com`
-- Update the **projects** and **experience** text blocks as needed.
+---
 
-## Local Preview (optional)
+🧑‍💼 **About Me**
 
-You can open `index.html` directly in a browser, or run a simple server:
+I am currently pursuing a **Master of Science in Management Information Systems (MIS)** at **Texas A&M University**, with a strong foundation in **computer engineering and cybersecurity**. My professional experiences include internships in **business analysis, digital forensics, and application development**.  
 
-```bash
-# Python 3
-python -m http.server 5500
-# then open http://localhost:5500 in your browser
-```
+I specialize in:
+- Investment finance, algorithmic and derivatives trading
+- Quantitative strategy development
+- Product development and business consulting
+- Cybersecurity and digital forensics
+
+---
+
+**Thank you for visiting my portfolio!**  
+I am always open to collaboration, freelance opportunities, and discussions in finance, tech, and cybersecurity domains. 
 
 ## License
 
