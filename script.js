@@ -36,7 +36,7 @@ document.querySelectorAll('.read-more-btn').forEach(button => {
         const fullTextContent = experienceCard.querySelector('.full-text-content');
         const shortText = experienceCard.querySelector('.experience-short-text');
 
-        if (fullTextContent.style.display === 'none') {
+        if (fullTextContent.style.display === 'none' || fullTextContent.style.display === '') {
             fullTextContent.style.display = 'block';
             shortText.style.display = 'none';
             button.textContent = 'Read Less';
