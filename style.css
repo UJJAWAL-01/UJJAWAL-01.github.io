@@ -278,7 +278,7 @@ a:hover {
 .card h4 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
-    color: var(--accent);
+    color: var(--ink);
 }
 .card p {
     color: var(--muted);
