@@ -3,7 +3,16 @@
     --card: #1c1f26;
     --ink: #e5e7eb;
     --muted: #9ca3af;
-    --accent: #3b82f6; /* modern business blue */
+    --accent: #3b82f6;
+}
+
+/* Light Mode Overrides */
+body.light-mode {
+    --bg: #f6f7fa;
+    --card: #fff;
+    --ink: #1c222b;
+    --muted: #667085;
+    --accent: #2563eb;
 }
 
 * {
@@ -35,7 +44,6 @@ a:hover {
     padding: 0 1rem;
 }
 
-/* === Header / Nav === */
 .site-header {
     position: sticky;
     top: 0;
@@ -73,18 +81,6 @@ a:hover {
     color: var(--ink);
 }
 
-/* LinkedIn Icon */
-.social-icon img {
-    width: 26px;
-    height: 26px;
-    filter: brightness(0) invert(1);
-    transition: filter 0.2s;
-}
-.social-icon img:hover {
-    filter: invert(46%) sepia(95%) saturate(2918%) hue-rotate(202deg) brightness(98%) contrast(95%);
-}
-
-/* Hamburger button (hidden by default) */
 .menu-toggle {
     display: none;
     background: none;
@@ -94,7 +90,15 @@ a:hover {
     cursor: pointer;
 }
 
-/* === Hero Section === */
+#theme-toggle {
+    background: transparent;
+    border: none;
+    color: var(--ink);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
 .hero {
     padding: 5rem 0;
     text-align: center;
@@ -132,7 +136,6 @@ a:hover {
     background: rgba(59, 130, 246, 0.1);
 }
 
-/* === Sections === */
 .section {
     padding: 3rem 0;
     border-top: 1px solid #1f2937;
@@ -153,7 +156,6 @@ a:hover {
     border-radius: 2px;
 }
 
-/* === Education Section === */
 .education-content {
     display: flex;
     justify-content: space-between;
@@ -165,8 +167,8 @@ a:hover {
 }
 .logo-container {
     flex-shrink: 0;
-    width: 60px; /* Adjust as needed */
-    height: 60px; /* Adjust as needed */
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     overflow: hidden;
     border: 1px solid #2c3340;
@@ -180,7 +182,6 @@ a:hover {
     object-fit: contain;
 }
 
-/* === Skills === */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -238,7 +239,6 @@ a:hover {
     font-size: 1.2rem;
 }
 
-/* === Projects & Certifications === */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -293,7 +293,6 @@ a:hover {
     font-weight: 600;
 }
 
-/* === Experience / Timeline === */
 .timeline {
     list-style: none;
     display: grid;
@@ -377,7 +376,6 @@ a:hover {
     margin-bottom: 0.75rem;
 }
 
-/* === Contact Form === */
 .contact-form {
     margin-top: 1.5rem;
     display: grid;
@@ -413,7 +411,6 @@ a:hover {
     background: #2563eb;
 }
 
-/* === Footer === */
 .site-footer {
     border-top: 1px solid #1f2937;
     padding: 1.5rem 0;
@@ -422,10 +419,9 @@ a:hover {
     font-size: 0.9rem;
 }
 
-/* === Responsive Tweaks === */
 @media (max-width: 768px) {
     .menu-toggle {
-        display: block; /* show hamburger */
+        display: block;
     }
     .nav {
         flex-direction: column;
