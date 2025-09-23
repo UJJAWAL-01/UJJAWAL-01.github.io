@@ -51,7 +51,57 @@ a:hover { color: var(--accent);}
     color: var(--muted);
     font-size: 1.2rem;
 }
+
+/* Skills & Tools, Soft Skills: Thicker Borders */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;}
+.skill-category, .soft-skills-card { background: var(--card); border: 2px solid #2c3340; border-radius: 1rem; padding: 1.5rem; transition: transform 0.3s, box-shadow 0.3s;}
+.skill-category:hover, .soft-skills-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);}
+.skill-category h4, .soft-skills-card h4 { color: var(--accent); margin-bottom: 1rem; font-size: 1.2rem;}
+.pill-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem;}
+.pill-list li { padding: 0.4rem 0.8rem; border: 2px solid #2c3340; border-radius: 999px; color: var(--muted); font-size: 0.95rem; transition: background 0.2s, color 0.2s;}
+.pill-list li:hover { background: #2c3340; color: var(--ink);}
 .cta-row .btn-outline:hover { border-color:var(--accent); color:var(--accent); background:rgba(59,130,246,0.1);}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+}
+.card {
+    background: var(--card);
+    border: 2px solid #2c3340;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+}
+.card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+.card a {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+}
+
+
 body.light-mode .pill-list li:hover {
     background: #2563eb;
     color: #fff;
