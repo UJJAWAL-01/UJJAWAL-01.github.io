@@ -113,3 +113,22 @@ body.light-mode .contact-form input, body.light-mode .contact-form textarea { ba
     .cta-row { flex-direction:row; flex-wrap:wrap; gap:3px;}
     .btn-outline {width:1rem; height:1rem; font-size:0.7rem;}
 }
+@media (max-width:700px) {
+  .header-flex {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .site-header .brand,
+  #theme-toggle,
+  .menu-toggle {
+    margin: 0;
+  }
+  .nav {
+    /* Nav stays as column dropdown */
+    flex-direction: column;
+  }
+}
+.header-flex > * { flex-shrink: 0; }
+.site-header .brand { white-space: nowrap; }
+
