@@ -179,6 +179,32 @@ body.light-mode .contact-form input, body.light-mode .contact-form textarea { ba
     flex-direction: column;
   }
 }
+
+@media (max-width: 700px) {
+  .nav {
+    position: absolute;
+    top: 60px;
+    right: 1rem;
+    width: 220px;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+    flex-direction: column;
+    background: var(--card);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(120%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 99;
+  }
+  .nav.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+}
+
+
 .header-flex > * { flex-shrink: 0; }
 .site-header .brand { white-space: nowrap; }
 
