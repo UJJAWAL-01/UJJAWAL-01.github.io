@@ -1,4 +1,3 @@
-// Mobile menu toggle
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 nav.classList.remove('open');
@@ -22,7 +21,6 @@ document.querySelectorAll('.nav a').forEach(link => {
         }
     });
 });
-// Experience section Read More toggle
 document.querySelectorAll('.read-more-btn').forEach(button => {
     button.addEventListener('click', () => {
         const experienceCard = button.closest('.experience-card');
@@ -39,7 +37,6 @@ document.querySelectorAll('.read-more-btn').forEach(button => {
         }
     });
 });
-// Light/Dark Mode toggle
 const themeToggle = document.getElementById("theme-toggle");
 if (themeToggle) {
     themeToggle.addEventListener("click", () => {
