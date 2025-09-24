@@ -1,10 +1,10 @@
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 toggle.addEventListener('click', () => {
-  nav.classList.toggle('open');
+    nav.classList.toggle('open');
 });
 window.addEventListener('resize', () => {
-  if (window.innerWidth > 700) nav.classList.remove('open');
+    if (window.innerWidth > 700) nav.classList.remove('open');
 });
 document.querySelectorAll('.nav a').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -34,17 +34,17 @@ document.querySelectorAll('.read-more-btn').forEach(button => {
         }
     });
 });
-const themeToggle = document.getElementById("theme-toggle");
+const themeToggle = document.getElementById('theme-toggle');
 if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("light-mode");
-        themeToggle.textContent = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
-        localStorage.setItem("theme", document.body.classList.contains("light-mode") ? "light" : "dark");
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        themeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+        localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
     });
-    window.addEventListener("DOMContentLoaded", () => {
-        if (localStorage.getItem("theme") === "light") {
-            document.body.classList.add("light-mode");
-            themeToggle.textContent = "☀️";
+    window.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+            themeToggle.textContent = '☀️';
         }
     });
 }
