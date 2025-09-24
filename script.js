@@ -1,13 +1,10 @@
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
-nav.classList.remove('open');
 toggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
+  nav.classList.toggle('open');
 });
 window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-        nav.classList.remove('open');
-    }
+  if (window.innerWidth > 700) nav.classList.remove('open');
 });
 document.querySelectorAll('.nav a').forEach(link => {
     link.addEventListener('click', (e) => {
