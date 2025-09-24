@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ujjawal Patel | Portfolio</title>
-    <link rel="icon" type="image/png" href="UJ_logo.png">
+    <link rel="icon" href="UJ_logo.png">
     <meta name="description" content="Portfolio of Ujjawal Patel — Graduate MIS Student, Business Analyst, Forensic Analyst." />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -15,14 +15,16 @@
         <div class="container header-flex">
             <h1 class="brand">Ujjawal Patel</h1>
             <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-            <nav class="nav">
+            <nav class="nav" id="main-nav">
                 <a href="#about">About</a>
                 <a href="#education">Education</a>
+                <a href="#projects">Projects</a>
                 <a href="#experience">Experience</a>
                 <a href="research.html">Research Ideas</a>
+                <a href="#certifications">Certifications</a>
                 <a href="#contact">Contact</a>
-                <button id="theme-toggle" aria-label="Toggle light/dark mode" style="margin-left:1em;">🌙</button>
             </nav>
+            <button id="theme-toggle" aria-label="Toggle light/dark mode" style="margin-left:1em;">🌙</button>
         </div>
     </header>
 
@@ -30,11 +32,11 @@
         <div class="container">
             <h2>Graduate MIS Student · Business Analyst · Forensic Analyst</h2>
             <p>
-                Welcome! I’m Ujjawal Patel from Mays Business School at Texas A&M.<br>
-                Blending business, data, and technology for better solutions. Dive in to explore my journey, impactful projects, and data-driven insights.
+                Welcome! I’m Ujjawal Patel from Mays Business School at Texas A&amp;M.<br>
+                Blending business, data, and technology for better solutions. Dive in to explore my journey, impactful projects, and a passion for data-driven insights and analytics.
             </p>
             <div class="location">
-                <i class="fas fa-map-marker-alt"></i> College Station, Texas, US
+                <i class="fas fa-map-marker-alt"></i> College Station, Texas, USA
             </div>
             <div class="cta-row">
                 <a class="btn-outline" href="https://www.linkedin.com/in/ujjawal-patel-7508b8199/" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -51,11 +53,9 @@
             <h3>About</h3>
             <p>
                 I am a business-focused technologist with a foundation in computer engineering and cybersecurity.
-                My interests span Data analysis, business analytics, equity research strategies, algorithmic trading, and business consulting.
-                Dedicated to analytical thinking, logical reasoning, and learning agility.
+                My interests span investment finance, algorithmic trading, quantitative strategies, and business consulting.
             </p>
         </section>
-
         <section id="education" class="section container" data-aos="fade-up">
             <h3>Education</h3>
             <ul class="timeline">
@@ -77,87 +77,32 @@
                             <div class="role">Bachelor of Technology in Computer Engineering</div>
                             <div class="org">K.J. Somaiya College of Engineering, Mumbai</div>
                             <div class="time">May 2025</div>
-                            <p>Honors degree in Cybersecurity, Forensics, and Cyber Laws</p>
+                            <p>Honors in Cybersecurity, Forensics, and Cyber Laws</p>
                         </div>
                         <div class="logo-container">
-                            <img src="download.png" alt="K.J. Somaiya College of Engineering Logo">
+                            <img src="download.png" alt="K.J. Somaiya College Logo">
                         </div>
                     </div>
                 </li>
             </ul>
         </section>
-
         <section id="projects" class="section container" data-aos="fade-up">
             <h3>Featured Projects</h3>
             <div class="grid">
                 <article class="card">
                     <h4>SPESA — Finance Portal</h4>
-                    <p>Expense tracking, EMI & SIP calculators; financial planning dashboard. Built with HTML, CSS, Python, SQL.</p>
+                    <p>Expense tracking, EMI & SIP calculators; financial planning dashboard. HTML, CSS, Python, SQL.</p>
                 </article>
                 <article class="card">
                     <h4>StopHunterVS — Trading Algo</h4>
-                    <p>Detects stop-hunt patterns using volume, price action, liquidity zone analysis. Python, Pine Script, Power BI, Excel.</p>
+                    <p>Detects stop-hunt patterns using data/volume/price. Python, Pine Script, Power BI, Excel.</p>
                 </article>
                 <article class="card">
                     <h4>Consolidated Financial Planner</h4>
-                    <p>LLM-powered investment comparison platform: SIP, bonds, equities, PPF. Python, SQL, Figma.</p>
+                    <p>Investment comparison: SIP, bonds, PPF, equities. Python, SQL, Figma.</p>
                 </article>
             </div>
         </section>
-
-                <section class="section container" id="skills" data-aos="fade-up">
-            <h3>Skills & Tools</h3>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Programming & Data</h4>
-                    <ul class="pill-list">
-                        <li>Python</li>
-                        <li>Java</li>
-                        <li>C</li>
-                        <li>SQL</li>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>Bash</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h4>Analytics & Tools</h4>
-                    <ul class="pill-list">
-                        <li>MS Excel</li>
-                        <li>Power BI</li>
-                        <li>PowerPoint</li>
-                        <li>Figma</li>
-                        <li>Tableau</li>
-                        <li>Pine Script</li>
-                        <li>Android Studio</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h4>Cybersecurity & Tech</h4>
-                    <ul class="pill-list">
-                        <li>Kali Linux</li>
-                        <li>Wireshark</li>
-                        <li>Network Miner</li>
-                        <li>Meterpreter</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="soft-skills-card">
-                <h4>Soft Skills</h4>
-                <ul class="pill-list">
-                    <li>Analytical thinking</li>
-                    <li>Logical reasoning</li>
-                    <li>Learning agility</li>
-                    <li>Collaboration</li>
-                    <li>Communication</li>
-                    <li>User Story Mapping</li>
-                    <li>Competitive analysis</li>
-                    <li>Confidence under pressure</li>
-                    <li>Decision-making</li>
-                </ul>
-            </div>
-        </section>
-
         <section id="experience" class="section container" data-aos="fade-up">
             <h3>Experience</h3>
             <ul class="timeline">
@@ -168,14 +113,12 @@
                             <div class="org">ESPS Finserv Pvt. Ltd.</div>
                             <div class="time">Jan 2025 – Jun 2025</div>
                             <p class="experience-short-text">
-                                At ESPS Finserv, I focused on making investment recommendations more structured and insightful. I designed a product catalog and built algorithmic trading indicators. The most exciting part was exploring statistical arbitrage models, giving clients a nearly 20% boost in profitability.
+                                Built product catalog, trading indicators, and researched arbitrage models to improve client portfolios and profitability.
                             </p>
                             <button class="read-more-btn">Read More</button>
                         </div>
                         <div class="full-text-content" style="display: none;">
-                            <p>
-                                Stepped into a dynamic consulting environment to make investment recommendations more structured, insightful and diversified. Created an integrated product catalog, built algorithmic trading indicators in Python and Pine Script, automated long–short decisions, improving profitability by 20%. This internship gave me a front-row seat to how finance and tech combine to drive results.
-                            </p>
+                            <p>Designed integrated catalog, automated research, and built long-short signals that increased profit by 20%.</p>
                         </div>
                     </div>
                 </li>
@@ -186,14 +129,12 @@
                             <div class="org">DeepCytes Cyberlabs (UK)</div>
                             <div class="time">Jun 2024 – Dec 2024</div>
                             <p class="experience-short-text">
-                                Developed an automated digital forensics toolkit, improved efficiency by a third, and co-designed a hardware prototype to protect against juice-jacking attacks.
+                                Automated forensic toolkit, improved investigation efficiency, and co-developed hardware to prevent juice-jacking attacks.
                             </p>
                             <button class="read-more-btn">Read More</button>
                         </div>
                         <div class="full-text-content" style="display: none;">
-                            <p>
-                                Developed a consolidated toolkit to automate digital investigation workflows, authored field manuals, and co-designed a juice-jacking prevention prototype, combining research and hands-on security innovation.
-                            </p>
+                            <p>Contributed to a toolkit, wrote manuals, and built security prototypes to guard field devices in live scenarios.</p>
                         </div>
                     </div>
                 </li>
@@ -204,45 +145,41 @@
                             <div class="org">K.J. Somaiya College of Engineering</div>
                             <div class="time">Jan 2023 – Mar 2023</div>
                             <p class="experience-short-text">
-                                Built an Android app to collect and redistribute unused medicines. Led coding and user interface design.
+                                Built an Android app for medicine redistribution—led interface and coding with strong outcomes.
                             </p>
                             <button class="read-more-btn">Read More</button>
                         </div>
                         <div class="full-text-content" style="display: none;">
-                            <p>
-                                Coded and designed the Medical Information Collector app in Android Studio and Figma. Made intuitive workflows for tracking medicines, improving lives via tech.
-                            </p>
+                            <p>Developed intuitive, impactful mobile tools in Java and Figma for community health impact.</p>
                         </div>
                     </div>
                 </li>
             </ul>
         </section>
-
         <section id="certifications" class="section container" data-aos="fade-up">
-          <h3>Certifications</h3>
-          <div class="grid">
-            <article class="card">
-                <h4>Google UX Design Specialization</h4>
-                <p>Google via Coursera</p>
-                <a href="https://coursera.org/share/6df8d69758ab3cf00ff396bea25f4090" target="_blank">View Certificate</a>
-            </article>
-            <article class="card">
-                <h4>Google Project Management: Foundations</h4>
-                <p>Google via Coursera</p>
-                <a href="https://coursera.org/share/9974fbc991abb53e55e55c20acd7d7f9" target="_blank">View Certificate</a>
-            </article>
-            <article class="card">
-                <h4>Databases and SQL for Data Science with Python</h4>
-                <p>IBM via Coursera</p>
-                <a href="https://coursera.org/share/604cd016a1fc11f3c3c414726fc254d0" target="_blank">View Certificate</a>
-            </article>
-            <article class="card">
-                <h4>Bloomberg Market Concepts</h4>
-                <p>Bloomberg</p>
-            </article>
-          </div>
+            <h3>Certifications</h3>
+            <div class="grid">
+                <article class="card">
+                    <h4>Google UX Design Specialization</h4>
+                    <p>Google via Coursera</p>
+                    <a href="https://coursera.org/share/6df8d69758ab3cf00ff396bea25f4090" target="_blank">View Certificate</a>
+                </article>
+                <article class="card">
+                    <h4>Google Project Management: Foundations</h4>
+                    <p>Google via Coursera</p>
+                    <a href="https://coursera.org/share/9974fbc991abb53e55e55c20acd7d7f9" target="_blank">View Certificate</a>
+                </article>
+                <article class="card">
+                    <h4>Databases and SQL for Data Science with Python</h4>
+                    <p>IBM via Coursera</p>
+                    <a href="https://coursera.org/share/604cd016a1fc11f3c3c414726fc254d0" target="_blank">View Certificate</a>
+                </article>
+                <article class="card">
+                    <h4>Bloomberg Market Concepts</h4>
+                    <p>Bloomberg</p>
+                </article>
+            </div>
         </section>
-
         <section id="contact" class="section container" data-aos="fade-up">
             <p>Let’s connect!</p>
             <form action="https://formspree.io/f/xpwjypyl" method="POST" class="contact-form">
