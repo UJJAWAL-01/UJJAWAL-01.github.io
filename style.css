@@ -16,7 +16,7 @@ body, html { background: var(--bg); color: var(--ink); font-family: Inter, Arial
 a { color: var(--ink); text-decoration: none;}
 a:hover { color: var(--accent);}
 .container { max-width: 980px; margin: 0 auto; padding: 0 1.2rem; }
-.site-header { position: sticky; top:0; background:rgba(14,17,23,0.95); backdrop-filter:blur(8px); border-bottom:2px solid #1f2937; z-index:20; padding:0.75rem 0;}
+.site-header { position: sticky; top:0; background:rgba(14,17,23,0.95); backdrop-filter:blur(8px); border-bottom:2px solid #1f2937; z-index:20; padding:0.75rem 0;height: fit-content;}
 .header-flex { display:flex; justify-content:space-between; align-items:center; gap:1rem;}
 .site-header .brand { font-size:1.8rem; font-weight:700; white-space:nowrap;}
 .nav { display:flex; gap:1.3rem; align-items:center; }
