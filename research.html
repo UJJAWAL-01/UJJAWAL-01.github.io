@@ -151,15 +151,94 @@ for r in fib:
                         </div>
                     </div>
                 </article>
-                <!-- Card 2 -->
+                <!-- Card 2: Drifted Bollinger Bands (DBB) -->
                 <article class="research-card" data-id="r2">
-                    <div class="thumb"><img src="TAM-MaroonBox-1.png" alt="Thumbnail 2"></div>
-                    <h4>Explainable ML for Credit Scoring</h4>
-                    <p class="excerpt">Interpretable model stacks that provide both accuracy and human-friendly explanations for credit decisions.</p>
+                    <div class="thumb"><img src="DBB.png" alt="Drifted Bollinger Bands chart" width="560" height="140" loading="lazy"></div>
+                    <h4>Drifted Bollinger Bands (DBB)</h4>
+                    <p class="excerpt">A multi-filtered Bollinger breakout strategy using long-term trend (365 EMA), short-term volatility gating, fixed risk rules and dynamic trailing stops to capture directional drifts while filtering false breakouts.</p>
                     <button class="research-readmore" aria-expanded="false">Read More</button>
                     <div class="full-content" hidden>
-                        <h4>Explainable ML for Credit Scoring</h4>
-                        <p>Full details: Build constrained ensembles with post-hoc explanations (SHAP/LIME) and local rule extraction. Focus on fairness constraints and regulatory compliance for lending institutions.</p>
+                        <h4>Drifted Bollinger Bands (DBB)</h4>
+                        <p><strong>Overview</strong>: DBB is a structurally disciplined breakout system. It signals entries on Bollinger Band breakouts but only when the long-term trend and a volatility filter agree. The approach reduces whipsaws and focuses capital on high-probability drift moves. Risk is controlled via fixed stop-loss & take-profit, with an optional ATR-based trailing stop to lock gains during strong trends.</p>
+
+                        <h5>Formal definitions</h5>
+                        <ol>
+                            <li><strong>Middle Band (SMA)</strong>: SMA_n = (1/n) × Σ Close_{t−i}</li>
+                            <li><strong>Standard Deviation (SD)</strong>: SD_n = sqrt( (1/n) × Σ (Close_{t−i} − SMA_n)^2 )</li>
+                            <li><strong>Upper / Lower Bands</strong>:
+                                <pre>Upper = SMA_n + k × SD_n
+Lower = SMA_n − k × SD_n</pre>
+                            </li>
+                        </ol>
+
+                        <h5>Algorithm (DBB v1)</h5>
+                        <ol>
+                            <li>Inputs: BB_length = 14, BB_k = 2.1, TrendEMA = 365, Vol_SD_len = 15, Vol_SMA_len = 28, StopLoss (fixed %), TakeProfit (fixed %), ATR_len = 14 (for trailing), Trail_ATR_mult.</li>
+                            <li>Compute Bollinger Bands using BB_length and BB_k.</li>
+                            <li>Trend filter: compute EMA_{365} on Close. Require: For Long trades price &gt; EMA_{365}; for Short trades price &lt; EMA_{365}.</li>
+                            <li>Volatility filter: compute SD_{15} (current volatility) and its 28-period SMA. Only allow trades when SD_{15} &gt; SMA_{28}(SD_{15}). This ensures volatility is above recent average.</li>
+                            <li>Generate entry signals:
+                                <ul>
+                                    <li>Long entry: when Close crosses above Upper Band AND Trend filter = Long AND Volatility filter = true.</li>
+                                    <li>Short entry: when Close crosses below Lower Band AND Trend filter = Short AND Volatility filter = true.</li>
+                                </ul>
+                            </li>
+                            <li>Risk rules (fixed): place StopLoss at a fixed distance (e.g. 1.5% or ATR_scaled) from entry. Set initial TakeProfit at a multiple (e.g. 1.5×) of risk (R). Use position sizing to cap risk per trade (e.g. 0.5–1.0% of equity).</li>
+                            <li>Trailing stop (optional): after trade moves favorably by X pips or Y × ATR, convert stop to ATR_len × Trail_ATR_mult below (for long) / above (for short) price and move it up as price advances to secure gains.</li>
+                        </ol>
+
+                        <h5>Parameters & recommended defaults</h5>
+                        <table class="f-cpr-table">
+                            <thead><tr><th>Input</th><th>Purpose</th><th>Recommended</th></tr></thead>
+                            <tbody>
+                                <tr><td>BB length</td><td>Bollinger window</td><td>14</td></tr>
+                                <tr><td>BB k</td><td>Band width multiplier</td><td>2.1</td></tr>
+                                <tr><td>Trend EMA</td><td>Long-term trend direction</td><td>365</td></tr>
+                                <tr><td>Vol SD length</td><td>Short-term volatility</td><td>15</td></tr>
+                                <tr><td>Vol SMA length</td><td>Volatility baseline</td><td>28</td></tr>
+                                <tr><td>ATR length</td><td>Trailing stop/scale</td><td>14</td></tr>
+                                <tr><td>StopLoss</td><td>Initial fixed stop (percent or ATR)</td><td>1.0–2.0% (or 1.0–1.5 × ATR)</td></tr>
+                                <tr><td>TakeProfit</td><td>Initial target (R multiple)</td><td>1.5 × Risk</td></tr>
+                                <tr><td>Position size</td><td>Risk per trade</td><td>0.5–1.0% equity</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h5>Pseudo-code</h5>
+                        <pre>// compute bands
+BB_mid = SMA(close, 14)
+BB_sd = STD(close, 14)
+BB_up = BB_mid + 2.1 * BB_sd
+BB_dn = BB_mid - 2.1 * BB_sd
+
+// trend & vol filters
+trend = EMA(close, 365)
+vol_now = STD(close, 15)
+vol_baseline = SMA(vol_now_series, 28)
+
+if (cross(close, BB_up) && close &gt; trend && vol_now &gt; vol_baseline) then
+    enter_long()
+    stop = entry_price - max(fixed_stop_pct, ATR(14) * 1.0)
+    target = entry_price + risk * 1.5
+    follow_with_trail(ATR(14) * Trail_ATR_mult)
+end
+
+if (cross(close, BB_dn) && close &lt; trend && vol_now &gt; vol_baseline) then
+    enter_short()
+    stop = entry_price + max(fixed_stop_pct, ATR(14) * 1.0)
+    target = entry_price - risk * 1.5
+    follow_with_trail(ATR(14) * Trail_ATR_mult)
+end</pre>
+
+                        <h5>Risk management & performance notes</h5>
+                        <p>DBB intentionally trades only when volatility and trend align with a breakout to avoid structural noise. Typical performance characteristics observed in backtests:</p>
+                        <ul>
+                            <li>Lower trade frequency vs naive BB breakouts, higher win-rate due to filtering.</li>
+                            <li>Improved maximum drawdown vs unfiltered breakouts when combined with fixed stop sizing and ATR-based trailing stops.</li>
+                            <li>Works best on liquid, intraday tickers where the 365 EMA provides meaningful structural bias (e.g., futures, FX majors).</li>
+                        </ul>
+
+                        <h5>Implementation notes</h5>
+                        <p>Ensure all indicators use the same bar timeframe. When using percent fixed stops, convert percent to instrument ticks for precision. For portfolio deployment, calibrate trade frequency and volatility thresholds per instrument to avoid overfitting.</p>
                     </div>
                 </article>
                 <!-- Card 3 -->
