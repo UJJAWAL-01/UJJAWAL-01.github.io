@@ -120,16 +120,16 @@ body.light-mode .contact-form input, body.light-mode .contact-form textarea { ba
 .site-footer { border-top: 2px solid #1f2937; padding: 1.5rem 0; color: var(--muted); text-align: center; font-size: 0.9rem; }
 
 /* Research grid and cards */
-.research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-.research-card { background: var(--card); border: 2px solid #2c3340; border-radius: 0.8rem; padding: 1rem; display:flex; flex-direction:column; gap:0.8rem; transition: transform 0.28s ease, box-shadow 0.28s ease; }
-.research-card .thumb { width:100%; height:140px; border-radius: 0.6rem; overflow: hidden; background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02)); display:flex; align-items:center; justify-content:center; }
+.research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; align-items: stretch; }
+.research-card { background: var(--card); border: 2px solid #2c3340; border-radius: 0.8rem; padding: 1rem; display:flex; flex-direction:column; gap:0.8rem; transition: transform 0.28s ease, box-shadow 0.28s ease; height:100%; justify-content:space-between; }
+.research-card .thumb { width:100%; height:140px; flex:0 0 140px; border-radius: 0.6rem; overflow: hidden; background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02)); display:flex; align-items:center; justify-content:center; }
 .research-card .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
 
 /* indicate images are interactive */
 .research-card .thumb img, .research-modal-hero img { cursor: zoom-in; }
-.research-card h4 { margin:0; font-size:1.05rem; color:var(--ink);}
-.research-card .excerpt { color:var(--muted); font-size:0.95rem; margin:0; flex-grow:1; }
-.research-card .research-readmore { align-self:flex-start; background:transparent; border:2px solid var(--accent); color:var(--accent); padding:0.45rem 0.7rem; border-radius:0.5rem; cursor:pointer; font-weight:700; }
+.research-card h4 { margin:0 0 0.35rem 0; font-size:1.05rem; color:var(--ink);}
+.research-card .excerpt { color:var(--muted); font-size:0.95rem; margin:0; flex:1 1 auto; }
+.research-card .research-readmore, .research-card .explore-link { align-self:flex-start; background:transparent; border:2px solid var(--accent); color:var(--accent); padding:0.45rem 0.7rem; border-radius:0.5rem; cursor:pointer; font-weight:700; text-decoration:none; }
 .research-card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,0.14); }
 
 /* Modal / overlay */
