@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <!-- The following viewport tag FIXES mobile zoom-in/out bug! -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Ujjawal Patel | Portfolio</title>
     <link rel="icon" href="UJ_logo.png">
     <meta name="description" content="Portfolio of Ujjawal Patel — Graduate MIS Student, Business Analyst, Forensic Analyst." />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preload" as="image" href="F_CPR.png">
 </head>
 <body>
     <header class="site-header">
@@ -154,6 +155,34 @@
                 </article>
             </div>
         </section>
+        <section id="research-preview" class="section container" data-aos="fade-up">
+            <h3>Research Ideas</h3>
+            <p>Short previews of current research topics. Click a card to read more on the Research page.</p>
+            <div class="research-grid">
+                <article class="research-card" data-id="r1" data-aos="fade-up" data-aos-delay="80">
+                    <div class="thumb"><img src="F_CPR.png" alt="Fibonacci Central Pivot Range chart" width="560" height="140" loading="lazy"></div>
+                    <h4>Fibonacci Central Pivot Range</h4>
+                    <p class="excerpt">Range-based pivot framework that fuses CPR geometry with Fibonacci scaling to produce adaptive bands for entries and exits.</p>
+                    <a href="research.html#r1" class="explore-link">Explore more →</a>
+                </article>
+
+                <article class="research-card" data-id="r2" data-aos="fade-up" data-aos-delay="160">
+                    <div class="thumb"><img src="TAM-MaroonBox-1.png" alt="Explainable ML thumbnail" width="560" height="140" loading="lazy"></div>
+                    <h4>Explainable ML for Credit Scoring</h4>
+                    <p class="excerpt">Interpretable model stacks that balance explainability and predictive performance for regulated lending decisions.</p>
+                    <a href="research.html#r2" class="explore-link">Explore more →</a>
+                </article>
+
+                <article class="research-card" data-id="r3" data-aos="fade-up" data-aos-delay="240">
+                    <div class="thumb"><img src="UJ_logo.png" alt="Time-series anomaly detection" width="560" height="140" loading="lazy"></div>
+                    <h4>Time-series Anomaly Detection</h4>
+                    <p class="excerpt">Hybrid statistical + neural approach to catch structural breaks with low false positives for financial series.</p>
+                    <a href="research.html#r3" class="explore-link">Explore more →</a>
+                </article>
+            </div>
+            <p style="margin-top:0.9rem;"><a href="research.html" class="explore-link">Explore more research ideas</a></p>
+        </section>
+
         <section id="experience" class="section container" data-aos="fade-up">
             <h3>Experience</h3>
             <ul class="timeline">
@@ -207,6 +236,7 @@
                 </li>
             </ul>
         </section>
+        
         <section id="certifications" class="section container" data-aos="fade-up">
             <h3>Certifications</h3>
             <div class="grid">

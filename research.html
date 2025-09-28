@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Research Ideas | Ujjawal Patel</title>
     <link rel="icon" type="image/png" href="UJ_logo.png">
     <meta name="description" content="Research Ideas - Ujjawal Patel" />
@@ -25,9 +25,204 @@
     </header>
     <main>
         <section class="section container" data-aos="fade-up">
-            <h3>Research Publications & Ideas</h3>
+            <h3>Research Publications & Ideas - WORK IN PROGRESS</h3>
             <p>Coming soon: Equity research, whitepapers, and innovative finance publications.</p>
         </section>
+        <!-- Research ideas grid -->
+        <section class="section container" id="research-ideas" data-aos="fade-up">
+            <div class="research-grid">
+                <!-- Card 1: Fibonacci Central Pivot Range -->
+                <article class="research-card" data-id="r1">
+                    <div class="thumb"><img src="F_CPR.png" alt="Fibonacci Central Pivot Range chart" width="560" height="140" loading="lazy"></div>
+                    <h4>Fibonacci Central Pivot Range</h4>
+                    <p class="excerpt">A range-based pivot framework that fuses Central Pivot Range (CPR) geometry with Fibonacci scaling to produce sharper, structurally-aware support/resistance zones and higher-probability entry/exit bands.</p>
+                    <button class="research-readmore" aria-expanded="false">Read More</button>
+                    <div class="full-content" hidden>
+                        <h4>Fibonacci Central Pivot Range (F‑CPR)</h4>
+                        <p><strong>Overview</strong>: Traditional pivot systems compute single levels which can misrepresent price structure during volatile regimes. F‑CPR defines a central pivot <em>range</em> (CPR) and refines support/resistance using Fibonacci ratios (e.g., 0.382, 0.5, 0.618) applied to derived S/R spreads. This produces adaptive bands that align with both volume-weighted structure (VWAP) and short-term volatility (ATR), improving the precision of entries, stop placements and profit targets.</p>
+
+                        <h5>Algorithm (high-level)</h5>
+                        <ol>
+                            <li><strong>Initialize parameters</strong>: SuperTrend Factor, ATR Length, ATR Multiplier, Session Time, Fibonacci ratios (r = [0.382, 0.5, 0.618]).</li>
+                            <li><strong>Daily pivot geometry</strong> (using previous-day OHLC):
+                                <ul>
+                                    <li>P = (High + Low + Close) / 3  &nbsp; (Central Pivot)</li>
+                                    <li>BCP = (High + Low) / 2  &nbsp; (Bottom Central Pivot)</li>
+                                    <li>ACP = P + (P - BCP)  &nbsp; (Top Central Pivot)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Base support/resistance</strong> (classic pivots):
+                                <pre>S1 = (2 × P) – High
+S2 = P – (High – Low)
+R1 = (2 × P) – Low
+R2 = P + (High – Low)</pre>
+                            </li>
+                            <li><strong>Fibonacci refinement</strong>: For each base S/R pair, compute Fibonacci-scaled offsets and overlay them as intermediate bands:
+                                <pre>S1_f_r = S1 + r × (P - S1)
+R1_f_r = R1 - r × (R1 - P)</pre>
+                                where r ∈ {0.382, 0.5, 0.618}.
+                            </li>
+                            <li><strong>Technical overlays</strong>:
+                                <ul>
+                                    <li>VWAP — volume-weighted typical price to bias bias and intraday fair-value.</li>
+                                    <li>ATR — Average True Range for volatility scaling.</li>
+                                    <li>SuperTrend bands — HL2 ± (Factor × ATR), used for trend confirmation and trailing stop placement.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Decision rules (examples)</strong>:
+                                <ul>
+                                    <li>Long bias when price > VWAP and above SuperTrend lower band; prefer entries at Fibonacci-refined S1_f_0.618 with tight ATR‑scaled stop below S2.</li>
+                                    <li>Short bias when price &lt; VWAP and below SuperTrend upper band; prefer entries at Fibonacci-refined R1_f_0.618 with ATR-scaled stop above R2.</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <h5>Why Fibonacci adds value</h5>
+                        <p>Applying Fibonacci ratios to the CPR-derived spreads converts single-point pivots into probabilistic bands that frequently coincide with natural retracement levels and liquidity clusters. Empirically, this reduces noise in entry signals and yields tighter risk-adjusted returns vs. classical single-level pivot rules.</p>
+
+                        <h5>Pseudo-code (simplified)</h5>
+                        <pre>// inputs: prev_high, prev_low, prev_close, fib = [0.382, 0.5, 0.618]
+P = (prev_high + prev_low + prev_close) / 3
+BCP = (prev_high + prev_low) / 2
+ACP = P + (P - BCP)
+S1 = (2 * P) - prev_high
+R1 = (2 * P) - prev_low
+for r in fib:
+    S1_f = S1 + r * (P - S1)
+    R1_f = R1 - r * (R1 - P)
+    emit_band(S1_f, R1_f)
+</pre>
+
+                        <h5>Empirical notes</h5>
+                        <p>The attached images (strategy report) show backtest snapshots where applying F‑CPR reduced drawdowns at key sessions and tightened exits. The unique selling point is aligning CPR geometry with Fibonacci scaling rather than using Fibonacci only on raw price swings — this preserves structural context and yields bands with stronger confluence.</p>
+                        <p><em>Implementation notes</em>: be mindful of data resolution (session vs. intraday), ensure ATR uses the same bar frequency as trading signals, and optionally weight Fibonacci ratios by volume at-price clusters to further refine bands.</p>
+                        
+                        <h5>Parameters &amp; Summary</h5>
+                        <table class="f-cpr-table">
+                            <thead>
+                                <tr><th>Input</th><th>Purpose</th><th>Recommended</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>ATR length</td><td>Volatility window for ATR</td><td>14</td></tr>
+                                <tr><td>ATR multiplier</td><td>Stop / band scaling</td><td>1.5 – 3.0</td></tr>
+                                <tr><td>SuperTrend factor</td><td>Trend-band sensitivity</td><td>3</td></tr>
+                                <tr><td>Fibonacci ratios</td><td>Refinement levels for S/R bands</td><td>0.382, 0.5, 0.618</td></tr>
+                                <tr><td>Session</td><td>Pivot computation source</td><td>Previous trading day (daily)</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h5>F‑CPR Diagram</h5>
+                        <!-- Inline SVG illustrating P / BCP / ACP and Fibonacci bands -->
+                        <div class="f-cpr-diagram-wrap">
+                            <div class="f-cpr-tooltip" aria-hidden="true"></div>
+                            <svg class="f-cpr-diagram" viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <defs>
+                                    <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
+                                        <stop offset="100%" stop-color="#000000" stop-opacity="0.02" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- background -->
+                                <rect x="0" y="0" width="600" height="140" fill="url(#g1)" rx="8" />
+                                <!-- center P line -->
+                                <line class="f-line" tabindex="0" data-label="P (Central Pivot)" x1="40" y1="70" x2="560" y2="70" stroke="#9ca3af" stroke-width="2" />
+                                <text x="46" y="64" fill="#9ca3af" font-size="11">P (Central Pivot)</text>
+                                <!-- BCP (below) -->
+                                <line class="f-line" tabindex="0" data-label="BCP (Bottom Central Pivot)" x1="40" y1="92" x2="560" y2="92" stroke="#6ee7b7" stroke-width="2" />
+                                <text x="46" y="106" fill="#6ee7b7" font-size="11">BCP (Bottom)</text>
+                                <!-- ACP (above) -->
+                                <line class="f-line" tabindex="0" data-label="ACP (Top Central Pivot)" x1="40" y1="48" x2="560" y2="48" stroke="#60a5fa" stroke-width="2" />
+                                <text x="46" y="40" fill="#60a5fa" font-size="11">ACP (Top)</text>
+
+                                <!-- S1 and R1 (further out) -->
+                                <line class="f-line" tabindex="0" data-label="S1 (Base Support)" x1="40" y1="116" x2="560" y2="116" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 4" />
+                                <text x="46" y="130" fill="#ef4444" font-size="11">S1 (Base)</text>
+                                <line class="f-line" tabindex="0" data-label="R1 (Base Resistance)" x1="40" y1="26" x2="560" y2="26" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 4" />
+                                <text x="46" y="20" fill="#f59e0b" font-size="11">R1 (Base)</text>
+
+                                <!-- Fibonacci bands between P and S1 (sample bands) -->
+                                <g class="f-bands" fill-opacity="0.12">
+                                    <rect class="f-band" tabindex="0" data-label="Fib 0.382" x="120" y="80" width="200" height="12" fill="#3b82f6" />
+                                    <rect class="f-band" tabindex="0" data-label="Fib 0.5" x="120" y="96" width="160" height="10" fill="#60a5fa" />
+                                    <rect class="f-band" tabindex="0" data-label="Fib 0.618" x="120" y="110" width="120" height="8" fill="#06b6d4" />
+                                </g>
+                                <text x="330" y="92" fill="#cbd5e1" font-size="11">Fibonacci‑refined support bands (0.382, 0.5, 0.618)</text>
+                            </svg>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 2 -->
+                <article class="research-card" data-id="r2">
+                    <div class="thumb"><img src="TAM-MaroonBox-1.png" alt="Thumbnail 2"></div>
+                    <h4>Explainable ML for Credit Scoring</h4>
+                    <p class="excerpt">Interpretable model stacks that provide both accuracy and human-friendly explanations for credit decisions.</p>
+                    <button class="research-readmore" aria-expanded="false">Read More</button>
+                    <div class="full-content" hidden>
+                        <h4>Explainable ML for Credit Scoring</h4>
+                        <p>Full details: Build constrained ensembles with post-hoc explanations (SHAP/LIME) and local rule extraction. Focus on fairness constraints and regulatory compliance for lending institutions.</p>
+                    </div>
+                </article>
+                <!-- Card 3 -->
+                <article class="research-card" data-id="r3">
+                    <div class="thumb"><img src="UJ_logo.png" alt="Thumbnail 3"></div>
+                    <h4>Time-series Anomaly Detection</h4>
+                    <p class="excerpt">A hybrid statistical + neural approach to detect structural breaks in financial time-series with low false-positive rate.</p>
+                    <button class="research-readmore" aria-expanded="false">Read More</button>
+                    <div class="full-content" hidden>
+                        <h4>Time-series Anomaly Detection</h4>
+                        <p>Full details: Combine robust statistical change-point detectors with lightweight LSTM autoencoders and calibrate alerts using domain-adaptive thresholds to reduce noise in production systems.</p>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="research-card" data-id="r4">
+                    <div class="thumb"><img src="download.png" alt="Thumbnail 4"></div>
+                    <h4>Privacy-preserving Data Sharing</h4>
+                    <p class="excerpt">Practical DP/secure-aggregation patterns for sharing aggregated research metrics across institutions.</p>
+                    <button class="research-readmore" aria-expanded="false">Read More</button>
+                    <div class="full-content" hidden>
+                        <h4>Privacy-preserving Data Sharing</h4>
+                        <p>Full details: Experiment with differentially-private aggregation and secure multi-party aggregation for constructing shared research benchmarks without exposing raw data.</p>
+                    </div>
+                </article>
+                <!-- Card 5 -->
+                <article class="research-card" data-id="r5">
+                    <div class="thumb"><img src="UJ_logo.png" alt="Thumbnail 5"></div>
+                    <h4>Behavioural Finance Signals</h4>
+                    <p class="excerpt">Quantifying investor sentiment from alternative web signals and integrating into asset-allocation signals.</p>
+                    <button class="research-readmore" aria-expanded="false">Read More</button>
+                    <div class="full-content" hidden>
+                        <h4>Behavioural Finance Signals</h4>
+                        <p>Full details: Extract sentiment and attention signals from forums, search trends, and news pipelines. Evaluate predictive power for cross-sectional returns and tail-risk indicators.</p>
+                    </div>
+                </article>
+                <!-- Card 6 -->
+                <article class="research-card" data-id="r6">
+                    <div class="thumb"><img src="TAM-MaroonBox-1.png" alt="Thumbnail 6"></div>
+                    <h4>Feature-efficient Models</h4>
+                    <p class="excerpt">Designing small-footprint models for edge inference in research instruments and dashboards.</p>
+                    <button class="research-readmore" aria-expanded="false">Read More</button>
+                    <div class="full-content" hidden>
+                        <h4>Feature-efficient Models</h4>
+                        <p>Full details: Study pruning, distillation, and sparse-feature learning to produce compact models that run in-browser or on constrained servers for low-latency research tools.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Modal / overlay used to show full research details -->
+        <div id="research-modal" class="research-modal" aria-hidden="true">
+            <div class="research-modal-backdrop"></div>
+            <div class="research-modal-panel" role="dialog" aria-modal="true" aria-labelledby="research-modal-title">
+                <button class="modal-close" aria-label="Close">✕</button>
+                <div class="research-modal-hero">
+                    <img id="research-modal-hero-img" alt="" src="" />
+                </div>
+                <div class="research-modal-body" id="research-modal-body" aria-live="polite">
+                    <!-- content injected dynamically -->
+                </div>
+            </div>
+        </div>
     </main>
     <footer class="site-footer">
         <div class="container">
