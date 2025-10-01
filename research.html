@@ -45,18 +45,13 @@
                         <ol>
                             <li><strong>Initialize parameters</strong>: SuperTrend Factor, ATR Length, ATR Multiplier, Session Time, Fibonacci ratios (r = [0.382, 0.5, 0.618]).</li>
                             <li><strong>Daily pivot geometry</strong> (using previous-day OHLC):
-                                <ul>
-                                    <li>P = (High + Low + Close) / 3  &nbsp; (Central Pivot)</li>
-                                    <li>BCP = (High + Low) / 2  &nbsp; (Bottom Central Pivot)</li>
-                                    <li>ACP = P + (P - BCP)  &nbsp; (Top Central Pivot)</li>
-                                </ul>
-                            </li>
-                            <li><strong>Base support/resistance</strong> (classic pivots):
-                                <pre>S1 = (2 × P) – High
-S2 = P – (High – Low)
-R1 = (2 × P) – Low
-R2 = P + (High – Low)</pre>
-                            </li>
+                                    <ul>
+                                        <li>Central pivot range (CPR) is computed from prior session OHLC and used to derive intra-day bands.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Base support/resistance</strong> (classic pivots):
+                                    <p>Detailed algebraic formulas and implementation pseudocode are intentionally withheld. If you'd like the exact pivot math and code snippets, please contact me for the full technical brief.</p>
+                                </li>
                             <li><strong>Fibonacci refinement</strong>: For each base S/R pair, compute Fibonacci-scaled offsets and overlay them as intermediate bands:
                                 <pre>S1_f_r = S1 + r × (P - S1)
 R1_f_r = R1 - r × (R1 - P)</pre>
@@ -80,18 +75,8 @@ R1_f_r = R1 - r × (R1 - P)</pre>
                         <h5>Why Fibonacci adds value</h5>
                         <p>Applying Fibonacci ratios to the CPR-derived spreads converts single-point pivots into probabilistic bands that frequently coincide with natural retracement levels and liquidity clusters. Empirically, this reduces noise in entry signals and yields tighter risk-adjusted returns vs. classical single-level pivot rules.</p>
 
-                        <h5>Pseudo-code (simplified)</h5>
-                        <pre>// inputs: prev_high, prev_low, prev_close, fib = [0.382, 0.5, 0.618]
-P = (prev_high + prev_low + prev_close) / 3
-BCP = (prev_high + prev_low) / 2
-ACP = P + (P - BCP)
-S1 = (2 * P) - prev_high
-R1 = (2 * P) - prev_low
-for r in fib:
-    S1_f = S1 + r * (P - S1)
-    R1_f = R1 - r * (R1 - P)
-    emit_band(S1_f, R1_f)
-</pre>
+                        <h5>Implementation notes</h5>
+                        <p>Core pseudo-code and step-by-step formulas are omitted here to protect proprietary calculations. Reach out to request the implementation notebook and Pine/strategy scripts.</p>
 
                         <h5>Empirical notes</h5>
                         <p>The attached images (strategy report) show backtest snapshots where applying F‑CPR reduced drawdowns at key sessions and tightened exits. The unique selling point is aligning CPR geometry with Fibonacci scaling rather than using Fibonacci only on raw price swings — this preserves structural context and yields bands with stronger confluence.</p>
@@ -161,15 +146,8 @@ for r in fib:
                         <h4>Drifted Bollinger Bands (DBB)</h4>
                         <p><strong>Overview</strong>: DBB is a structurally disciplined breakout system. It signals entries on Bollinger Band breakouts but only when the long-term trend and a volatility filter agree. The approach reduces whipsaws and focuses capital on high-probability drift moves. Risk is controlled via fixed stop-loss & take-profit, with an optional ATR-based trailing stop to lock gains during strong trends.</p>
 
-                        <h5>Formal definitions</h5>
-                        <ol>
-                            <li><strong>Middle Band (SMA)</strong>: SMA_n = (1/n) × Σ Close_{t−i}</li>
-                            <li><strong>Standard Deviation (SD)</strong>: SD_n = sqrt( (1/n) × Σ (Close_{t−i} − SMA_n)^2 )</li>
-                            <li><strong>Upper / Lower Bands</strong>:
-                                <pre>Upper = SMA_n + k × SD_n
-Lower = SMA_n − k × SD_n</pre>
-                            </li>
-                        </ol>
+                        <h5>Formal definitions (high level)</h5>
+                        <p>The strategy uses standard Bollinger components (center SMA, band width via standard deviation) combined with trend and volatility screening. Exact algebraic expressions and custom adjustments are available on request.</p>
 
                         <h5>Algorithm (DBB v1)</h5>
                         <ol>
@@ -203,31 +181,8 @@ Lower = SMA_n − k × SD_n</pre>
                             </tbody>
                         </table>
 
-                        <h5>Pseudo-code</h5>
-                        <pre>// compute bands
-BB_mid = SMA(close, 14)
-BB_sd = STD(close, 14)
-BB_up = BB_mid + 2.1 * BB_sd
-BB_dn = BB_mid - 2.1 * BB_sd
-
-// trend & vol filters
-trend = EMA(close, 365)
-vol_now = STD(close, 15)
-vol_baseline = SMA(vol_now_series, 28)
-
-if (cross(close, BB_up) && close &gt; trend && vol_now &gt; vol_baseline) then
-    enter_long()
-    stop = entry_price - max(fixed_stop_pct, ATR(14) * 1.0)
-    target = entry_price + risk * 1.5
-    follow_with_trail(ATR(14) * Trail_ATR_mult)
-end
-
-if (cross(close, BB_dn) && close &lt; trend && vol_now &gt; vol_baseline) then
-    enter_short()
-    stop = entry_price + max(fixed_stop_pct, ATR(14) * 1.0)
-    target = entry_price - risk * 1.5
-    follow_with_trail(ATR(14) * Trail_ATR_mult)
-end</pre>
+                        <h5>Implementation notes</h5>
+                        <p>Complete pseudocode, risk equations and trailing-stop tuning are not published here. Contact me for the full strategy package including backtest notebooks and Pine Script examples.</p>
 
                         <h5>Risk management & performance notes</h5>
                         <p>DBB intentionally trades only when volatility and trend align with a breakout to avoid structural noise. Typical performance characteristics observed in backtests:</p>
@@ -241,15 +196,39 @@ end</pre>
                         <p>Ensure all indicators use the same bar timeframe. When using percent fixed stops, convert percent to instrument ticks for precision. For portfolio deployment, calibrate trade frequency and volatility thresholds per instrument to avoid overfitting.</p>
                     </div>
                 </article>
-                <!-- Card 3 -->
+                <!-- Card 3: GAPR (Gap Reversal Capture) -->
                 <article class="research-card" data-id="r3">
-                    <div class="thumb"><img src="UJ_logo.png" alt="Thumbnail 3"></div>
-                    <h4>Time-series Anomaly Detection</h4>
-                    <p class="excerpt">A hybrid statistical + neural approach to detect structural breaks in financial time-series with low false-positive rate.</p>
+                    <div class="thumb"><img src="GAPR.png" alt="GAPR (Gap Reversal Capture) chart" width="560" height="140" loading="lazy"></div>
+                    <h4>GAPR — Gap Reversal Capture</h4>
+                    <p class="excerpt">Targets reversal opportunities after significant market-open gaps using gap magnitude, RSI exhaustion and ATR-based adaptive stops to capture directional mean-reversions.</p>
                     <button class="research-readmore" aria-expanded="false">Read More</button>
                     <div class="full-content" hidden>
-                        <h4>Time-series Anomaly Detection</h4>
-                        <p>Full details: Combine robust statistical change-point detectors with lightweight LSTM autoencoders and calibrate alerts using domain-adaptive thresholds to reduce noise in production systems.</p>
+                        <h4>GAPR — Gap Reversal Capture</h4>
+                        <p><strong>Overview</strong>: GAPR identifies high-probability reversal setups at the open by combining a gap threshold with short-term momentum exhaustion (RSI) and volatility-scaled risk management. The system targets limit reversion while adapting stop/target levels to current instrument volatility via ATR.</p>
+
+                        <h5>Key inputs</h5>
+                        <ul>
+                            <li>Gap threshold (percentage) — defines what constitutes a significant open gap.</li>
+                            <li>RSI length &amp; thresholds — overbought/oversold levels to confirm exhaustion.</li>
+                            <li>ATR length &amp; multipliers — for dynamic stop-loss and target sizing.</li>
+                        </ul>
+
+                        <h5>Rules (high level)</h5>
+                        <ol>
+                            <li>Compute gap % = (Today’s Open − Yesterday’s Close) / Yesterday’s Close × 100.</li>
+                            <li>Identify Gap Up (≥ threshold) and Gap Down (≤ −threshold).</li>
+                            <li>Calculate RSI over the chosen lookback window.</li>
+                            <li>Entry signals:
+                                <ul>
+                                    <li>Short when Gap Up AND RSI indicates overbought (e.g., &gt;70).</li>
+                                    <li>Long when Gap Down AND RSI indicates oversold (e.g., &lt;30).</li>
+                                </ul>
+                            </li>
+                            <li>Risk management: use ATR-derived stop and target distances; scale position to fixed % risk per trade.</li>
+                        </ol>
+
+                        <h5>Professional note</h5>
+                        <p>This page intentionally omits the full mathematical formulas and proprietary tuning constants. If you’d like the complete specification (exact gap formula implementations, RSI/ATR parameters used in live backtests, and Pine Script strategy code), contact me and I’ll share the technical brief and backtest results.</p>
                     </div>
                 </article>
 
