@@ -40,6 +40,24 @@ body.light-mode {
     --accent: #2563eb;
 }
 body, html { background: var(--bg); color: var(--ink); font-family: Inter, Arial, sans-serif; line-height: 1.6; font-size: 18px; scroll-behavior: smooth; }
+a { transition: color var(--motion-duration) var(--motion-ease); }
+
+/* Smooth theme transitions for dark/light mode */
+html, body, .section, .card, .research-card, .research-modal-panel { transition: background-color var(--motion-duration) var(--motion-ease), color var(--motion-duration) var(--motion-ease), box-shadow var(--motion-duration) var(--motion-ease); }
+.research-modal-hero img, .research-card .thumb img { transition: transform var(--motion-duration) var(--motion-ease), opacity var(--motion-duration) ease; }
+
+/* subtle glowing underline for the Research nav link */
+.nav-glow { position: relative; }
+.nav-glow::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 100%; height: 4px; border-radius: 4px; background: linear-gradient(90deg, rgba(59,130,246,0.14), rgba(99,102,241,0.12)); opacity: 0; transform: translateY(6px); transition: opacity var(--motion-duration) var(--motion-ease), transform var(--motion-duration) var(--motion-ease); }
+.nav-glow.glow-on::after { opacity: 1; transform: translateY(0); }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    :root { --motion-duration: 60ms; --motion-duration-fast: 40ms; }
+    html, body, .section, .card, .research-card, .research-modal-panel { transition: none !important; }
+    .research-modal-hero img, .research-card .thumb img { transition: none !important; }
+    .nav-glow::after { transition: none !important; }
+}
 a { color: var(--ink); text-decoration: none;}
 a:hover { color: var(--accent);}
 .container { max-width: 1100px; margin: 0 auto; padding: 0 var(--section-gutter); }
