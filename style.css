@@ -58,7 +58,7 @@ a:hover { color: var(--accent);}
 .cta-row { display:flex; gap:1.1rem; justify-content:center; flex-wrap:wrap; }
 .cta-row .btn-outline { display:inline-flex; align-items:center; justify-content:center; width:2.5rem; height:2.5rem; border-radius:50%; border:2px solid var(--muted); transition:all 0.2s; color:var(--muted); font-size:1.2rem; }
 .cta-row .btn-outline:hover { border-color:var(--accent); color:var(--accent); background:rgba(59,130,246,0.1);}
-.section { padding: var(--section-padding-vertical) 0; border-top: 1px solid var(--section-border); margin-bottom: calc(var(--space-lg) + 0.5rem); border-radius: 0.6rem; background: var(--section-bg); box-shadow: var(--section-shadow);}
+.section { padding: var(--section-padding-vertical) var(--section-gutter); border-top: 1px solid var(--section-border); margin-bottom: calc(var(--space-lg) + 0.5rem); border-radius: 0.6rem; background: var(--section-bg); box-shadow: var(--section-shadow);} 
 .section h3 { font-size: var(--section-heading-size); margin-bottom: calc(var(--space-md) + 0.6rem); position: relative; letter-spacing: -0.5px;}
 .section h3::after { content: ""; position: absolute; bottom: -6px; left: 0; width: 40px; height: 3px; background: var(--accent); border-radius: 2px;}
 
@@ -186,8 +186,8 @@ body.light-mode .contact-form input, body.light-mode .contact-form textarea { ba
     .container { padding-left:1rem; padding-right:2rem;}
     /* add breathing room for mobile sections */
     .section { padding-top: calc(var(--space-md) + 0.4rem); padding-bottom: calc(var(--space-md) + 0.4rem); }
-    /* make section gutters symmetric with the container */
-    .section { padding-left:1rem; padding-right:1.5rem; }
+    /* make section gutters symmetric with the container - smaller gutters on mobile */
+    .section { padding-left:1rem; padding-right:1rem; }
     /* give hero the same mobile gutters to avoid edge touching */
     .hero { padding-left:1rem; padding-right:1.5rem; }
     .header-flex { flex-direction: row; align-items: center; justify-content: space-between;}
