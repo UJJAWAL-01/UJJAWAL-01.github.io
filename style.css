@@ -58,6 +58,35 @@ html, body, .section, .card, .research-card, .research-modal-panel { transition:
     .research-modal-hero img, .research-card .thumb img { transition: none !important; }
     .nav-glow::after { transition: none !important; }
 }
+
+/* Research heading entrance + subtle pulse */
+@keyframes research-entrance {
+    0% { transform: translateY(8px) scale(0.995); opacity: 0; }
+    60% { transform: translateY(-2px) scale(1.01); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes research-pulse {
+    0% { box-shadow: 0 0 0 rgba(59,130,246,0.04); }
+    50% { box-shadow: 0 6px 26px rgba(59,130,246,0.03); }
+    100% { box-shadow: 0 0 0 rgba(59,130,246,0.04); }
+}
+
+#research-preview h3 {
+    animation: research-entrance 520ms var(--motion-ease) both;
+    /* after entrance, start a very slow pulse */
+    animation-delay: 120ms;
+}
+
+/* apply subtle pulse using a separate animation layer after a short delay */
+#research-preview.h3-pulse-active h3 {
+    animation: research-entrance 520ms var(--motion-ease) both, research-pulse 3500ms ease-in-out 900ms infinite;
+}
+
+/* If user prefers reduced motion, disable pulse */
+@media (prefers-reduced-motion: reduce) {
+    #research-preview h3 { animation: none !important; }
+}
 a { color: var(--ink); text-decoration: none;}
 a:hover { color: var(--accent);}
 .container { max-width: 1100px; margin: 0 auto; padding: 0 var(--section-gutter); }

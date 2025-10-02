@@ -3,6 +3,18 @@ const nav = document.querySelector('.nav');
 toggle.addEventListener('click', () => {
     nav.classList.toggle('open');
 });
+
+// Activate research heading pulse after entrance animation (reduced-motion aware)
+(function activateResearchPulse() {
+    try {
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) return;
+        const preview = document.getElementById('research-preview');
+        if (!preview) return;
+        // add class after small timeout so entrance animation finishes
+        setTimeout(() => preview.classList.add('h3-pulse-active'), 700);
+    } catch (e) { /* ignore */ }
+})();
 window.addEventListener('resize', () => {
     if (window.innerWidth > 700) nav.classList.remove('open');
 });
