@@ -215,6 +215,28 @@ function trapFocus(e) {
     }
 }
 
+// Motion utilities: respect user preference for reduced motion and initialize AOS
+function prefersReducedMotion() {
+    try {
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch (e) {
+        return false;
+    }
+}
+
+function initAOS() {
+    if (!window.AOS) return;
+    const reduce = prefersReducedMotion();
+    AOS.init({
+        duration: reduce ? 80 : 420,
+        easing: 'cubic-bezier(.2,.9,.2,1)',
+        once: true,
+        mirror: false,
+        offset: 90
+    });
+    if (reduce) document.documentElement.classList.add('reduced-motion');
+}
+
 document.querySelectorAll('.research-readmore').forEach(btn => {
     btn.addEventListener('click', (e) => {
         const card = btn.closest('.research-card');

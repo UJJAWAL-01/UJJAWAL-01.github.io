@@ -4,6 +4,12 @@
     --ink: #e5e7eb;
     --muted: #9ca3af;
     --accent: #3b82f6;
+    /* motion and transition tokens */
+    --motion-duration-fast: 160ms;
+    --motion-duration: 320ms;
+    --motion-ease: cubic-bezier(.2,.9,.2,1);
+    --section-gutter: 1.5rem;
+    --section-padding-vertical: 2.2rem;
     /* responsive header sizing */
     --brand-size: 1.9rem;
     --brand-size-mobile: 1.4rem;
@@ -36,7 +42,7 @@ body.light-mode {
 body, html { background: var(--bg); color: var(--ink); font-family: Inter, Arial, sans-serif; line-height: 1.6; font-size: 18px; scroll-behavior: smooth; }
 a { color: var(--ink); text-decoration: none;}
 a:hover { color: var(--accent);}
-.container { max-width: 980px; margin: 0 auto; padding: 0 var(--space-md); }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 var(--section-gutter); }
 .site-header { position: sticky; top:0; background:rgba(14,17,23,0.95); backdrop-filter:blur(8px); border-bottom:2px solid #1f2937; z-index:20; padding:6px 0;}
 .header-flex { display:flex; justify-content:space-between; align-items:center; gap:0.5rem;}
 .site-header .brand { font-size:var(--brand-size); font-weight:800; white-space:nowrap;}
@@ -52,8 +58,8 @@ a:hover { color: var(--accent);}
 .cta-row { display:flex; gap:1.1rem; justify-content:center; flex-wrap:wrap; }
 .cta-row .btn-outline { display:inline-flex; align-items:center; justify-content:center; width:2.5rem; height:2.5rem; border-radius:50%; border:2px solid var(--muted); transition:all 0.2s; color:var(--muted); font-size:1.2rem; }
 .cta-row .btn-outline:hover { border-color:var(--accent); color:var(--accent); background:rgba(59,130,246,0.1);}
-.section { padding: calc(var(--space-lg) - 0.2rem) 0; border-top: 1px solid var(--section-border); margin-bottom: var(--space-lg); border-radius: 0.6rem; background: var(--section-bg); box-shadow: var(--section-shadow);}
-.section h3 { font-size: var(--section-heading-size); margin-bottom: calc(var(--space-md) + 0.15rem); position: relative; letter-spacing: -0.5px;}
+.section { padding: var(--section-padding-vertical) 0; border-top: 1px solid var(--section-border); margin-bottom: calc(var(--space-lg) + 0.5rem); border-radius: 0.6rem; background: var(--section-bg); box-shadow: var(--section-shadow);}
+.section h3 { font-size: var(--section-heading-size); margin-bottom: calc(var(--space-md) + 0.6rem); position: relative; letter-spacing: -0.5px;}
 .section h3::after { content: ""; position: absolute; bottom: -6px; left: 0; width: 40px; height: 3px; background: var(--accent); border-radius: 2px;}
 
 /* subtle alternating backgrounds for sections to improve hierarchy */
@@ -99,11 +105,11 @@ body.light-mode .section:nth-of-type(even) { background: rgba(0,0,0,0.01); }
 .soft-skills-card { background: var(--card); border: 2px solid #2c3340; border-radius: 1rem; padding: 1.3rem; margin-bottom:2rem;}
 .soft-skills-card h4 { color: var(--accent); margin-bottom: 1rem;}
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem;}
-.card { background: var(--card); border: 2px solid #2c3340; border-radius: 1rem; padding: 1.25rem; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;}
+.card { background: var(--card); border: 2px solid #2c3340; border-radius: 1rem; padding: 1.25rem; transition: transform var(--motion-duration) var(--motion-ease), box-shadow var(--motion-duration) var(--motion-ease); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;}
 .card h4 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--accent);}
 .card p { color: var(--muted); font-size: 0.95rem; flex-grow: 1;}
 .card a { display: inline-block; margin-top: 0.75rem; font-size: 0.9rem; color: var(--accent); font-weight: 600;}
-.card:hover { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0,0,0,0.14);}
+.card:hover { transform: translateY(-6px); box-shadow: 0 18px 50px rgba(0,0,0,0.26);}
 .experience-card { background: var(--card); border: 2px solid #2c3340; border-radius: 1rem; padding: 1.5rem; transition: box-shadow 0.3s;}
 .experience-card:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.13);}
 .experience-card .summary { position: relative;}
@@ -121,7 +127,7 @@ body.light-mode .contact-form input, body.light-mode .contact-form textarea { ba
 
 /* Research grid and cards */
 .research-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; align-items: stretch; grid-auto-rows: 1fr; }
-.research-card { background: var(--card); border: 2px solid #2c3340; border-radius: 0.8rem; padding: 1rem; display:flex; flex-direction:column; gap:0.8rem; transition: transform 0.28s ease, box-shadow 0.28s ease; height:100%; justify-content:space-between; min-width:0; }
+.research-card { background: var(--card); border: 2px solid #2c3340; border-radius: 0.8rem; padding: 1.1rem; display:flex; flex-direction:column; gap:0.8rem; transition: transform var(--motion-duration) var(--motion-ease), box-shadow var(--motion-duration) var(--motion-ease); height:100%; justify-content:space-between; min-width:0; }
 .research-card .thumb { width:100%; height:140px; flex:0 0 140px; border-radius: 0.6rem; overflow: hidden; background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02)); display:flex; align-items:center; justify-content:center; }
 .research-card .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
 
@@ -136,7 +142,7 @@ body.light-mode .contact-form input, body.light-mode .contact-form textarea { ba
 .research-modal { position: fixed; inset: 0; display: grid; place-items: center; pointer-events: none; opacity: 0; transition: opacity 0.28s ease; z-index: 120; }
 .research-modal.open { pointer-events: auto; opacity: 1; }
 .research-modal-backdrop { position:absolute; inset:0; background: rgba(2,6,23,0.6); backdrop-filter: blur(6px); }
-.research-modal-panel { position:relative; width: min(920px, calc(100% - 3rem)); max-height: calc(100% - 4rem); overflow:auto; background: var(--card); border-radius: 0.8rem; padding:1.25rem 1.5rem; box-shadow: 0 30px 80px rgba(0,0,0,0.55); transform: translateY(12px) scale(0.98); transition: transform 0.28s ease; }
+.research-modal-panel { position:relative; width: min(920px, calc(100% - 3rem)); max-height: calc(100% - 4rem); overflow:auto; background: var(--card); border-radius: 0.8rem; padding:1.25rem 1.5rem; box-shadow: 0 30px 80px rgba(0,0,0,0.55); transform: translateY(12px) scale(0.98); transition: transform var(--motion-duration) var(--motion-ease), opacity var(--motion-duration) ease; }
 .research-modal.open .research-modal-panel { transform: translateY(0) scale(1); }
 .research-modal-body { color: var(--ink); }
 .modal-close { position:absolute; right:0.6rem; top:0.6rem; background:transparent; border:none; color:var(--muted); font-size:1.15rem; cursor:pointer; }
