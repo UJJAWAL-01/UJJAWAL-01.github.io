@@ -31,6 +31,63 @@
         <!-- Research ideas grid -->
         <section class="section container" id="research-ideas" data-aos="fade-up">
             <div class="research-grid">
+
+                <article class="research-card" data-id="r4">
+    <div class="thumb">
+        <img src="SignalConfidenceEngine.png" alt="Signal Confidence Engine technical analysis dashboard" width="560" height="140" loading="lazy">
+    </div>
+
+    <h4>Signal Confidence Engine</h4>
+
+    <p class="excerpt">
+        A multi-timeframe technical analysis engine that synthesizes trend, momentum, volume, and price structure into an explainable confidence score to reduce noise and improve trading decision quality.
+    </p>
+
+    <button class="research-readmore" aria-expanded="false">Read More</button>
+
+    <div class="full-content" hidden>
+        <h4>Signal Confidence Engine — Multi-Timeframe Confidence Scoring</h4>
+
+        <p>
+            <strong>Overview</strong>: The Signal Confidence Engine converts raw market data into a single, interpretable confidence score by evaluating indicator confluence across multiple timeframes. Instead of relying on isolated signals, the system emphasizes agreement between trend, momentum, volume participation, and Fibonacci price structure, with higher-timeframe confirmation used to filter noise.
+        </p>
+
+        <h5>Key inputs</h5>
+        <ul>
+            <li>OHLCV price data — daily and weekly timeframes.</li>
+            <li>Moving averages (SMA 50 &amp; SMA 200) — trend strength and structure.</li>
+            <li>RSI (14) — momentum and exhaustion analysis.</li>
+            <li>Volume participation — relative volume confirmation.</li>
+            <li>Fibonacci pivots — price positioning within key structural levels.</li>
+        </ul>
+
+        <h5>Scoring logic (high level)</h5>
+        <ol>
+            <li>Evaluate trend strength using short- vs long-term moving average alignment.</li>
+            <li>Score momentum based on RSI positioning and continuation strength.</li>
+            <li>Validate price action through volume participation relative to recent averages.</li>
+            <li>Assess price structure using Fibonacci pivot proximity and bias.</li>
+            <li>Aggregate weighted scores into a Daily Confidence Score.</li>
+            <li>Blend Daily (60%) and Weekly (40%) signals to produce a Final Confluence Score.</li>
+        </ol>
+
+        <h5>Outputs</h5>
+        <ul>
+            <li>Daily Signal Confidence — tactical, timeframe-specific analysis.</li>
+            <li>Weekly Trend Confirmation — higher-timeframe validation.</li>
+            <li>Final Confluence Score — noise-reduced, decision-grade signal.</li>
+            <li>Indicator-level breakdown with human-readable reasoning.</li>
+        </ul>
+
+        <h5>Professional note</h5>
+        <p>
+            This public overview intentionally abstracts internal weighting logic, scoring thresholds, and tuning parameters. For detailed methodology, indicator calibration, backtesting results, or system architecture discussions, feel free to reach out and I can share a technical brief.
+        </p>
+    </div>
+</article>
+
+
+
                 <!-- Card 0: Quantitative Sector Rotation Analyzer -->
                 <article class="research-card" data-id="r0">
                     <div class="thumb"><img src="ETF.png" alt="Sector Rotation Analyzer chart" width="560" height="140" loading="lazy"></div>
@@ -254,17 +311,6 @@
                     </div>
                 </article>
 
-                <!-- Card 4 -->
-                <article class="research-card" data-id="r4">
-                    <div class="thumb"><img src="brew.jpg" alt="Thumbnail 4"></div>
-                    <h4>Brewing...</h4>
-                    <p class="excerpt">...</p>
-                    <button class="research-readmore" aria-expanded="false">Read More</button>
-                    <div class="full-content" hidden>
-                        <h4>...</h4>
-                        <p>Details...</p>
-                    </div>
-                </article>
                 <!-- Card 5 -->
                 <article class="research-card" data-id="r5">
                     <div class="thumb"><img src="brew.jpg" alt="Thumbnail 5"></div>
